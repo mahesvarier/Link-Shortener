@@ -1,3 +1,5 @@
+Link to the [https://miro.com/app/board/uXjVLKVT8dQ=/?share_link_id=116581666168](Miro Board):
+
 # Running the Link Shortener Project
 
 Follow these steps to run the Link Shortener project:
