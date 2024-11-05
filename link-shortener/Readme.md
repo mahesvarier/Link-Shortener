@@ -33,3 +33,39 @@ Follow these steps to run the Link Shortener project:
 ## Troubleshooting
 - Ensure that your environment variables are set correctly as specified in the `launchSettings.json` file.
 - If you encounter any issues, check the output logs for detailed error messages.
+
+## Database Setup
+
+This project requires a SQL Server database. You can easily set it up using Docker. Follow the steps below to run the SQL Server container:
+
+### Prerequisites
+
+- [Docker](https://www.docker.com/get-started) must be installed and running on your machine.
+
+### Pulling the SQL Server Image
+
+Before running the SQL Server container, you need to pull the SQL Server image from Docker Hub. You can do this by executing the following command in your terminal or command prompt:
+
+```bash
+docker pull mcr.microsoft.com/azure-sql-edge
+```
+
+### Running SQL Server in Docker
+
+After the image has been pulled, run the following command to start a SQL Server container:
+
+```bash
+docker run -e 'ACCEPT_EULA=1' \
+           -e 'MSSQL_SA_PASSWORD=MyStrongPassword!' \
+           -e 'MSSQL_PID=Developer' \
+           -e 'MSSQL_USER=SA' \
+           -p 1433:1433 \
+           -d --name=sql \
+           mcr.microsoft.com/azure-sql-edge
+
+```
+Environment Variables:
+ACCEPT_EULA=1: Accepts the SQL Server EULA.
+MSSQL_SA_PASSWORD=MyStrongPassword!: Sets the SA (System Administrator) password.
+MSSQL_PID=Developer: Specifies the edition of SQL Server to run.
+MSSQL_USER=SA: Specifies the SQL Server administrator user.
