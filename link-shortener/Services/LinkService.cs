@@ -24,7 +24,7 @@ namespace LinkShortener.Service
             do
             {
                 shortenedUrl = StaticUrlShortener.GenerateShortenedUrl();
-            } while (await _linkRepository.GetLinkByShortenedUrlAsync(shortenedUrl) != null);
+            } while (await _linkRepository.GetLinkByShortenedUrlAsync(shortenedUrl) != null); //check for duplicates
 
             var link = new Link
             {
