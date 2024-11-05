@@ -1,4 +1,7 @@
-public class CreateShortenedLinkRequest
+namespace LinkShortener.Models
 {
-    public string OriginalUrl { get; set; }
+    public class CreateShortenedLinkRequest
+    {
+        public string OriginalUrl { get; set; }
+    }
 }

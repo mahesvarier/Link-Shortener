@@ -12,11 +12,6 @@ namespace LinkShortener.Service
             _context = context;
         }
 
-        public async Task<Link> GetLinkByIdAsync(int id)
-        {
-            return await _context.Links.FirstAsync(l => l.Id == id);
-        }
-
         public async Task<Link?> GetLinkByShortenedUrlAsync(string shortenedUrl)
         {
             return await _context.Links.FirstOrDefaultAsync(l => l.ShortenedUrl == shortenedUrl);

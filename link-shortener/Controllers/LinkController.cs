@@ -1,5 +1,6 @@
 using LinkShortener.Service;
 using Microsoft.AspNetCore.Mvc;
+using LinkShortener.Models;
 
 namespace LinkShortener.Controllers
 {
@@ -18,12 +19,14 @@ namespace LinkShortener.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateShortenedLink([FromBody] CreateShortenedLinkRequest createShortenedLinkRequest)
         {
-            try{
+            try
+            {
                 var link = await _linkService.CreateShortenedLinkAsync(createShortenedLinkRequest);
-                var response = new { ShortenedUrl = link.ShortenedUrl };
+                var response = new CreateShortenedLinkResponse { ShortenedUrl = link.ShortenedUrl };
                 return Ok(response);
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 _logger.LogError(e, "An error occurred while creating the shortened link.");
                 return StatusCode(500, "An error occurred while creating the shortened link.");
             }
@@ -32,16 +35,18 @@ namespace LinkShortener.Controllers
         [HttpGet("{shortenedUrl}")]
         public async Task<IActionResult> GetOriginalUrl(string shortenedUrl)
         {
-            try{
+            try
+            {
                 var originalUrl = await _linkService.GetOriginalUrlAsync(shortenedUrl);
                 if (originalUrl == null)
                 {
                     return NotFound();
                 }
-                
+
                 return Ok(new { OriginalUrl = originalUrl });
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 _logger.LogError(e, "An error occurred while retrieving the original URL.");
                 return StatusCode(500, "An error occurred while retrieving the original URL.");
             }
@@ -50,7 +55,8 @@ namespace LinkShortener.Controllers
         [HttpGet("GetAllUrls")]
         public async Task<IActionResult> GetAllUrls()
         {
-            try{
+            try
+            {
                 var originalUrl = await _linkService.GetAllUrls();
                 if (originalUrl == null)
                 {
@@ -58,7 +64,8 @@ namespace LinkShortener.Controllers
                 }
                 return Ok(originalUrl);
             }
-            catch(Exception e){
+            catch (Exception e)
+            {
                 _logger.LogError(e, "An error occurred while retrieving the original URL.");
                 return StatusCode(500, "An error occurred while retrieving the original URL.");
             }
