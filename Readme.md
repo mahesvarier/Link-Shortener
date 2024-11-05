@@ -1,4 +1,4 @@
-Link to the [https://miro.com/app/board/uXjVLKVT8dQ=/?share_link_id=116581666168](Miro Board):
+[Link to the Miro Board](https://miro.com/app/board/uXjVLKVT8dQ=/?share_link_id=116581666168)
 
 # Running the Link Shortener Project
 
