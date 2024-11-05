@@ -18,14 +18,14 @@ public class LinkServiceTests
     public async Task CreateShortenedLinkAsync_ShouldReturnShortenedLink()
     {
         // Arrange
-        var originalUrl = "https://example.com";
+        var request = new CreateShortenedLinkRequest { OriginalUrl = "https://example.com" };
 
         // Act
-        var result = await _linkService.CreateShortenedLinkAsync(originalUrl);
+        var result = await _linkService.CreateShortenedLinkAsync(request);
 
         // Assert
         Assert.NotNull(result);
-        Assert.Equal(originalUrl, result.OriginalUrl);
+        Assert.Equal(request.OriginalUrl, result.OriginalUrl);
         Assert.NotEmpty(result.ShortenedUrl);
     }
 

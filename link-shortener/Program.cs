@@ -21,7 +21,22 @@ builder.Services.AddScoped<ILinkRepository, LinkRepository>();
 // Register the ILinkService and its implementation
 builder.Services.AddScoped<ILinkService, LinkService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policyBuilder =>
+    {
+        if (builder.Environment.IsDevelopment())
+        {
+            policyBuilder.WithOrigins("http://localhost:4200")
+                         .AllowAnyHeader()
+                         .AllowAnyMethod();
+        }
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

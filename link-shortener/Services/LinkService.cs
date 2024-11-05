@@ -12,8 +12,9 @@ namespace LinkShortener.Service
             _linkRepository = linkRepository;
         }
 
-        public async Task<Models.Link> CreateShortenedLinkAsync(string originalUrl)
+        public async Task<Link> CreateShortenedLinkAsync(CreateShortenedLinkRequest createShortenedLinkRequest)
         {
+            var originalUrl = createShortenedLinkRequest.OriginalUrl;
             var existingLink = await _linkRepository.GetLinkByOriginalUrlAsync(originalUrl);
             if (existingLink != null)
             {
@@ -45,6 +46,11 @@ namespace LinkShortener.Service
                 return null;
             }
             return link.OriginalUrl;
+        }
+
+        public async Task<List<string>> GetAllUrls(){
+            var links = await _linkRepository.GetAllLinks();
+            return links.Select(link => link.ShortenedUrl).ToList();
         }
     }
 }

@@ -80,3 +80,4 @@
 /Users/mahesvarier/Downloads/Link Shortener/link-shortener/obj/Debug/net6.0/link-shortener.pdb
 /Users/mahesvarier/Downloads/Link Shortener/link-shortener/obj/Debug/net6.0/link-shortener.genruntimeconfig.cache
 /Users/mahesvarier/Downloads/Link Shortener/link-shortener/obj/Debug/net6.0/ref/link-shortener.dll
+/Users/mahesvarier/Downloads/Link Shortener/link-shortener/obj/Debug/net6.0/link-shortener.sourcelink.json

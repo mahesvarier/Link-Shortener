@@ -6,7 +6,8 @@ namespace LinkShortener.Service
 {
     public interface ILinkService
     {
-        Task<Link> CreateShortenedLinkAsync(string originalUrl);
+        Task<Link> CreateShortenedLinkAsync(CreateShortenedLinkRequest createShortenedLinkRequest);
         Task<string?> GetOriginalUrlAsync(string shortenedUrl);
+        Task<List<string>> GetAllUrls();
     }
 }

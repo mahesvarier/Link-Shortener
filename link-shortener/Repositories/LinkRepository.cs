@@ -32,5 +32,10 @@ namespace LinkShortener.Service
         {
             return await _context.Links.FirstOrDefaultAsync(l => l.OriginalUrl == originalUrl);
         }
+
+        public async Task<List<Link>> GetAllLinks()
+        {
+            return await _context.Links.Where(l => l.ExpiresAt > DateTime.UtcNow).ToListAsync();
+        }
     }
 }
